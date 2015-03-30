@@ -1,8 +1,9 @@
 # Scalable K Means++ Implementation
+**Ongoing Project** 
+
 This project is an implementation based on Bahmani, Moseley, Vattani, Kumar and Vassilvitskii's paper
 ***Scalable K Means++*** in 2012.
 
-http://dl.acm.org/citation.cfm?id=2180915
 
 ### Reference
 
