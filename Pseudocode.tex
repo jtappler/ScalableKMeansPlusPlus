@@ -1,0 +1,94 @@
+\documentclass[fontsize=11pt]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage{fourier}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{lipsum}
+\usepackage{sectsty}
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\setlength\parindent{0pt}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\horrule{0.5pt} \\[0.4cm]
+\huge Algorithm (Pseudocode) \\
+\horrule{2pt} \\[0.1cm]
+}
+\begin{document}
+\date{}
+\maketitle % Print the title
+
+
+\section*{Notations}
+
+Let $X =\{x_1,...x_n\}$ be the set of points in $d$-dimensional Euclidean space, and let $k$ be a positive integer specifying the number of clusters. Let ||$x_i$ - $x_j$ || denote the Euclidean distance between $x_i$ and $x_j$. For a point $x$ and a subset $Y \subseteq X$ of points, the distance is defined as $d(x,Y) = min_{y \in Y} ||x - y||$. For a subset $Y \subseteq X$ of points, let its \textit{centroid} be given by
+\begin{equation*}
+\begin{split}
+    \text{centroid}(Y) = \frac{1}{|Y|}\sum_{y \in Y} x
+\end{split}
+\end{equation*}
+Let $C =\{c_1,...c_k\}$ be the ser of points and let $Y \subseteq X$. We define the \textit{cost} of $Y$ with respect to $C$ as
+\begin{equation*}
+\begin{split}
+    \phi_Y(C) = \sum_{y \in Y} d^2(y,C) = \sum_{y \in Y} \min_{i=1,...,k}||y-c_i||^2
+\end{split}
+\end{equation*}
+
+
+%----------------------------------------------------------------------------------------
+%	Algorithm
+%----------------------------------------------------------------------------------------
+
+\section*{Algorithm}
+
+%------------------------------------------------
+
+\subsection*{\textbf{$k$-means++($k$) initialization}}
+\begin{enumerate}
+	\item $C \leftarrow$ sample a point uniformlt at random from $X$ 
+	\item \textbf{while} $|C|<k$ \textbf{do}
+		\begin{itemize}
+		\item Sample $x \in X$ with probability $\frac{d^2(x,C)}{\phi_X(C)}$
+		\item $C \leftarrow C \cup \{x\}$ 
+		\end{itemize}
+	\item \textbf{end while} 
+\end{enumerate}
+
+%------------------------------------------------
+
+\subsection*{\textbf{$k$-means||($k,l$) initialization}}
+\begin{enumerate}
+	\item $C \leftarrow$ sample a point uniformlt at random from $X$ 
+	\item $\psi \leftarrow \phi_X(C)$
+	\item \textbf{for} $O$(log$\psi$) times \textbf{do}
+		\begin{itemize}
+		\item $C' \leftarrow$ sample each point $x \in X$ independently with probability $p_x = \frac{l \cdot d^2(x,C)}{\phi_X(C)}$	
+		\item $C \leftarrow C \cup C'$ 
+		\end{itemize}
+	\item \textbf{end for} 
+	\item For $x \in C$, set $w_x$ to be the number of points in $X$ closer to $x$ than any point in $C$ 
+		\item Recluster the weighted points in $C$ into $k$ clusters
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
