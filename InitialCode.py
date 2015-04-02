@@ -12,6 +12,9 @@ def initi(X, K):
         C.append(X[i])
     return C
 
+def logLikelihood(beta, points):
+    return 1/(1.0+et**(-(np.dot(beta,points))))
+
 def nearest_cluster_center(point, cc):
     index.min = point.group
     distance.min = FLOAT_MAX
