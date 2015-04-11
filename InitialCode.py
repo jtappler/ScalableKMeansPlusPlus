@@ -1,3 +1,10 @@
+import numpy.random as random
+random.seed(1)
+k = 5
+centers = nrd.multivariate_normal([0,0,0],5*np.identity(3),k)
+data = [nrd.multivariate_normal(center, np.identity(3),100) for center in centers]
+data = np.vstack(data)
+
 def initi(X, K):
     C = [X[0]]
     for k in range(1, K):
@@ -47,3 +54,16 @@ def kMeansPP(points, cc):
     for p in points:
         p.group = nearest_cluster_center(p, cc)[0]
     return
+
+def kmeanspar(k,l):
+    C = data[nrd.choice(range(len(data)),1),]
+    Phi = Cost(C,data)
+    for i in range(int(np.log(Phi))):
+        prob = [l*Cost(C,x) for x in data]/Cost(C,data)
+        flag = nrd.uniform(size=len(data))
+        C = np.concatenate(C,data[prob>=flag,])
+    return
+
+## Optimization Strategies
+#1. Using alternative method to replace for loop in Python
+#2. Will try on large datasets, if still take too long. Could try to use other languages to write the looping part
