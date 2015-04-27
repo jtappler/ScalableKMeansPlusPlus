@@ -8,7 +8,7 @@ functions.tmp:      ScalableKMeansPlusPlus/InitialCode.py
         python ScalableKMeansPlusPlus/InitialCode.py
         @touch functions.tmp
 
-third.tmp:      ScalableKMeansPlusPlus/DataSimulation.py
+Data.tmp:      ScalableKMeansPlusPlus/DataSimulation.py
         python ScalableKMeansPlusPlus/DataSimulation.py
         @touch Data.tmp
 
