@@ -1,6 +1,6 @@
 version=1.0
 
-ScalableKMeansPlusPlus.pdf: ScalableKMeansPlusPlus.tex ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_15_1.png ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_20_0.png ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_23_0.png ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_30_1.png
+ScalableKMeansPlusPlus.pdf: ScalableKMeansPlusPlus.tex ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_16_1.png ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_21_0.png ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_24_0.png ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_31_1.png
 	pdflatex ScalableKMeansPlusPlus
 
 
@@ -8,21 +8,21 @@ ScalableKMeansPlusPlus.tex: ScalableKMeansPlusPlus.ipynb
 	@ipython nbconvert --to latex ScalableKMeansPlusPlus.ipynb
 	@touch ScalableKMeansPlusPlus.tex
 
-ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_15_1.png: ScalableKMeansPlusPlus.ipynb
+ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_16_1.png: ScalableKMeansPlusPlus.ipynb
 	@ipython nbconvert --to latex ScalableKMeansPlusPlus.ipynb
-	@touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_15_1.png
+	@touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_16_1.png
 
-ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_20_0.png: ScalableKMeansPlusPlus.ipynb
+ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_21_0.png: ScalableKMeansPlusPlus.ipynb
 	@ipython nbconvert --to latex ScalableKMeansPlusPlus.ipynb
-	@touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_20_0.png
+	@touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_21_0.png
 
-ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_23_0.png: ScalableKMeansPlusPlus.ipynb
+ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_24_0.png: ScalableKMeansPlusPlus.ipynb
 	@ipython nbconvert --to latex ScalableKMeansPlusPlus.ipynb
-	@touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_23_0.png
+	@touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_24_0.png
 
-ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_30_1.png: ScalableKMeansPlusPlus.ipynb
+ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_31_1.png: ScalableKMeansPlusPlus.ipynb
 	@ipython nbconvert --to latex ScalableKMeansPlusPlus.ipynb
-	@touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_30_1.png
+	@touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_31_1.png
 
 .PHONY: all clean
 
