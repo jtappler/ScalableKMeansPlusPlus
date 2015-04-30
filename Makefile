@@ -1,18 +1,34 @@
-version=0.1
+version=1.0
 
-pyproject_$(version).tgz:       function.tmp Data.tmp
-        tar czf pyproject_$(version).tgz project
-        @echo "BUILD COMPLETED"
+ScalableKMeansPlusPlus.pdf: ScalableKMeansPlusPlus.tex ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_15_1.png ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_20_0.png ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_23_0.png ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_30_1.png
+	pdflatex ScalableKMeansPlusPlus
 
-functions.tmp:      ScalableKMeansPlusPlus/InitialCode.py
-        python ScalableKMeansPlusPlus/InitialCode.py
-        @touch functions.tmp
 
-Data.tmp:      ScalableKMeansPlusPlus/DataSimulation.py
-        python ScalableKMeansPlusPlus/DataSimulation.py
-        @touch Data.tmp
+ScalableKMeansPlusPlus.tex:      ScalableKMeansPlusPlus.ipynb
+        @ipython nbconvert --to latex ScalableKMeansPlusPlus.ipynb
+        @touch ScalableKMeansPlusPlus.tex
+
+ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_15_1.png:      ScalableKMeansPlusPlus.ipynb
+        @ipython nbconvert --to latex ScalableKMeansPlusPlus.ipynb
+        @touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_15_1.png
+
+ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_20_0.png:      ScalableKMeansPlusPlus.ipynb
+        @ipython nbconvert --to latex ScalableKMeansPlusPlus.ipynb
+        @touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_20_0.png
+
+ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_23_0.png:      ScalableKMeansPlusPlus.ipynb
+        @ipython nbconvert --to latex ScalableKMeansPlusPlus.ipynb
+        @touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_23_0.png
+
+ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_30_1.png:      ScalableKMeansPlusPlus.ipynb
+        @ipython nbconvert --to latex ScalableKMeansPlusPlus.ipynb
+        @touch ScalableKMeansPlusPlus_files/ScalableKMeansPlusPlus_30_1.png
+
+.PHONY: all clean
+
+all: ScalableKMeansPlusPlus.pdf
 
 clean:
-        @rm -f *.tmp
-        @rm -f *.tgz
+        @rm -rf ScalableKMeansPlusPlus_files
+        @rm -f *.tex
         @echo "cleaned up"
